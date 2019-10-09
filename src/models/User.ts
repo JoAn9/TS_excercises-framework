@@ -1,7 +1,7 @@
 import { Model } from './Model';
 import { Attributes } from './Attributes';
 import { Eventing } from './Eventing';
-import { Sync } from './Sync';
+import { ApiSync } from './ApiSync';
 
 export interface UserProps {
   id?: number;
@@ -16,7 +16,7 @@ export class User extends Model<UserProps> {
     const user = new User(
       new Attributes<UserProps>(attrs),
       new Eventing(),
-      new Sync(rootUrl)
+      new ApiSync(rootUrl)
     );
 
     return user;
