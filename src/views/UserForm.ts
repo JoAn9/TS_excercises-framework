@@ -5,9 +5,12 @@ export class UserForm {
 
   eventsMap(): { [key: string]: () => void } {
     return {
-      'click:button': this.onButtonClick,
-      'mouseover:h1': this.onHeaderMouseover,
+      'click:.set-age': this.onSetAgeClick,
     };
+  }
+
+  onSetAgeClick(): void {
+    console.log('age clicked!');
   }
 
   bindEvents(fragment: DocumentFragment): void {
@@ -22,14 +25,6 @@ export class UserForm {
     }
   }
 
-  onButtonClick(): void {
-    console.log('clicked!');
-  }
-
-  onHeaderMouseover(): void {
-    console.log('mouse over header');
-  }
-
   template(): string {
     return `
       <div>
@@ -39,6 +34,7 @@ export class UserForm {
         <div></div>
         <input />
         <button>Click Me</button>
+        <button class="set-age">Set Random Age</button>
       </div>
     `;
   }
