@@ -16,11 +16,11 @@ interface Sync<T> {
   save(data: T): AxiosPromise;
 }
 
-interface hasId {
+interface HasId {
   id?: number;
 }
 
-export class Model<T extends hasId> {
+export class Model<T extends HasId> {
   constructor(
     private attributes: Attributes<T>,
     private events: Events,
@@ -41,7 +41,7 @@ export class Model<T extends hasId> {
   fetch(): void {
     const id = this.get('id');
 
-    if (!id) {
+    if (typeof id !== 'number') {
       throw new Error("Can't fetch user without id");
     }
 
